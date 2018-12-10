@@ -1,15 +1,17 @@
 const path = require('path');
-const fs = require('fs');
+const webpack = require('webpack');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   devtool: '#inline-source-map',
 
   entry: {
-    glify: ['./src/js/index.js']
+    glify: ['./src/js/index.js'],
+    vendor: ['earcut', 'leaflet', 'point-in-polygon', 'polygon-lookup', 'rbush']
   },
 
   output: {
-    path: path.resolve(__dirname, '..'),
+    path: path.resolve(__dirname, '..', 'lib'),
     filename: '[name].js',
     chunkFilename: '[chunkhash].js'
   },
@@ -38,5 +40,21 @@ module.exports = {
     hints: false
   },
 
-  plugins: []
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        node_vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'all',
+          priority: 1
+        }
+      }
+    }
+  },
+
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static'
+    })
+  ]
 };
