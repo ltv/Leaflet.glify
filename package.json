@@ -1,23 +1,26 @@
 {
   "name": "leaflet.glify",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "web gl renderer plugin for leaflet",
-  "main": "src/js/index.js",
-  "files": ["/src"],
+  "main": "glify.js",
+  "files": [
+    "/src"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify --external leaflet -t brfs src/js/index.js -o glify.js"
+    "build": "webpack --progress --colors --config webpack/webpack.prod.js",
+    "build:browserify": "browserify --external leaflet -t brfs src/js/index.js -o glify.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/robertleeplummerjr/Leaflet.glify.git"
+    "url": "git+https://github.com/ltv/Leaflet.glify.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/robertleeplummerjr/Leaflet.glify/issues"
+    "url": "https://github.com/ltv/Leaflet.glify/issues"
   },
-  "homepage": "https://github.com/robertleeplummerjr/Leaflet.glify#readme",
+  "homepage": "https://github.com/ltv/Leaflet.glify#readme",
   "dependencies": {
     "earcut": "^2.1.3",
     "leaflet": "^1.3.4",
@@ -26,7 +29,11 @@
     "rbush": "^2.0.2"
   },
   "devDependencies": {
+    "brfs": "^2.0.1",
     "browserify": "^16.2.2",
-    "brfs": "^2.0.1"
+    "transform-loader": "^0.2.4",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-merge": "^4.1.5"
   }
 }
