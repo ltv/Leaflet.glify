@@ -38,18 +38,6 @@ module.exports = {
     hints: false
   },
 
-  // optimization: {
-  //   splitChunks: {
-  //     cacheGroups: {
-  //       node_vendors: {
-  //         test: /[\\/]node_modules[\\/]/,
-  //         chunks: 'all',
-  //         priority: 1
-  //       }
-  //     }
-  //   }
-  // },
-
   plugins: [
     new BundleAnalyzerPlugin({
       analyzerMode: 'static'

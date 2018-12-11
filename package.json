@@ -1,6 +1,6 @@
 {
-  "name": "leaflet.glify",
-  "version": "1.1.5",
+  "name": "@ltv/leaflet.glify",
+  "version": "1.1.1",
   "description": "web gl renderer plugin for leaflet",
   "main": "lib/glify.js",
   "scripts": {
